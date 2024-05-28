@@ -19,7 +19,7 @@ export function Profile() {
       <Text style={styles.subtitle}>{user?.bio}</Text>
 
       <Input value={username} onChangeText={setUsername} />
-      <Button title="Pesquisar" onPress={handleFetchUser} />
+      <Button title="Pesquisar" onPress={handleFetchUser} isLoading={loading} />
     </View>
   );
 }
