@@ -1,8 +1,9 @@
-import { StyleSheet, TextInput } from 'react-native';
+import { StyleSheet, TextInput, TextInputProps } from 'react-native';
 
-export function Input() {
+export function Input({ ...rest }: TextInputProps) {
   return (
     <TextInput
+      {...rest}
       style={styles.input}
       placeholder="username"
       placeholderTextColor="#C4C4CC"

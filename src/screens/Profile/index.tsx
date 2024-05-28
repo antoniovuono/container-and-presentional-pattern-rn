@@ -4,7 +4,8 @@ import { Button } from '../components/Button';
 import { Input } from '../components/Input';
 
 export function Profile() {
-  const { user } = useProfile();
+  const { user, username, setUsername, handleFetchUser, loading } =
+    useProfile();
 
   return (
     <View style={styles.container}>
@@ -17,8 +18,8 @@ export function Profile() {
       <Text style={styles.title}>{user?.name}</Text>
       <Text style={styles.subtitle}>{user?.bio}</Text>
 
-      <Input />
-      <Button title="Pesquisar" isLoading={false} />
+      <Input value={username} onChangeText={setUsername} />
+      <Button title="Pesquisar" onPress={handleFetchUser} />
     </View>
   );
 }

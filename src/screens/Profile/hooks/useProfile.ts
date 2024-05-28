@@ -7,12 +7,27 @@ type UserProps = {
 };
 
 export function useProfile() {
+  const [username, setUsername] = useState<string>('');
   const [user, serUser] = useState<UserProps>({} as UserProps);
+  const [loading, setLoading] = useState<boolean>(false);
 
-  async function fetchUser() {
-    const response = await fetch('https://api.github.com/users/antoniovuono');
-    const data = await response.json();
-    serUser(data);
+  console.log('user', user);
+
+  async function fetchUser(params = 'antoniovuono') {
+    setLoading(true);
+    try {
+      const response = await fetch(`https://api.github.com/users/${params}`);
+      const data = await response.json();
+      serUser(data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  function handleFetchUser() {
+    fetchUser(username);
   }
 
   useEffect(() => {
@@ -21,5 +36,9 @@ export function useProfile() {
 
   return {
     user,
+    username,
+    setUsername,
+    handleFetchUser,
+    loading,
   };
 }
