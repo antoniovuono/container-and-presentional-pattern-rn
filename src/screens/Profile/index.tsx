@@ -4,22 +4,23 @@ import { Button } from '../components/Button';
 import { Input } from '../components/Input';
 
 export function Profile() {
-  const { user, username, setUsername, handleFetchUser, loading } =
-    useProfile();
+  const { user, username, setUsername, loading, fetchUser } = useProfile();
 
   return (
     <View style={styles.container}>
       <Image
         source={{
-          uri: user?.avatar_url,
+          uri:
+            user?.avatar_url ??
+            'https://static.vecteezy.com/ti/vetor-gratis/p1/23402465-homem-avatar-gratis-vetor.jpg',
         }}
         style={styles.avatar}
       />
-      <Text style={styles.title}>{user?.name}</Text>
-      <Text style={styles.subtitle}>{user?.bio}</Text>
+      <Text style={styles.title}>{user?.name ?? 'Nome do usuário'}</Text>
+      <Text style={styles.subtitle}>{user?.bio ?? 'Biografia do usuário'}</Text>
 
       <Input value={username} onChangeText={setUsername} />
-      <Button title="Pesquisar" onPress={handleFetchUser} isLoading={loading} />
+      <Button title="Pesquisar" onPress={fetchUser} isLoading={loading} />
     </View>
   );
 }

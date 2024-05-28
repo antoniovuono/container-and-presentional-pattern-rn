@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { Alert } from 'react-native';
 
 type UserProps = {
   avatar_url: string;
@@ -7,16 +8,18 @@ type UserProps = {
 };
 
 export function useProfile() {
-  const [username, setUsername] = useState<string>('');
+  const [username, setUsername] = useState<string>();
   const [user, serUser] = useState<UserProps>({} as UserProps);
   const [loading, setLoading] = useState<boolean>(false);
 
-  console.log('user', user);
-
-  async function fetchUser(params = 'antoniovuono') {
+  async function fetchUser() {
     setLoading(true);
     try {
-      const response = await fetch(`https://api.github.com/users/${params}`);
+      if (!username) {
+        return Alert.alert('username não informado');
+      }
+
+      const response = await fetch(`https://api.github.com/users/${username}`);
       const data = await response.json();
       serUser(data);
     } catch (error) {
@@ -26,19 +29,11 @@ export function useProfile() {
     }
   }
 
-  function handleFetchUser() {
-    fetchUser(username);
-  }
-
-  useEffect(() => {
-    fetchUser();
-  }, []);
-
   return {
     user,
     username,
     setUsername,
-    handleFetchUser,
     loading,
+    fetchUser,
   };
 }
