@@ -1,6 +1,14 @@
 module.exports = {
   extends: ['expo', 'prettier'],
   plugins: ['prettier'],
+  overrides: [
+    {
+      files: ['tests/**/*'],
+      env: {
+        jest: true,
+      },
+    },
+  ],
   rules: {
     'react/self-closing-comp': 'error',
     'prettier/prettier': [
