@@ -3,7 +3,12 @@ module.exports = {
   plugins: ['prettier'],
   overrides: [
     {
-      files: ['tests/**/*'],
+      files: [
+        'tests/**/*',
+        '**/__tests__/**/*.[jt]s?(x)',
+        '**/?(*.)+(spec|test).[jt]s?(x)',
+      ],
+      extends: ['plugin:testing-library/react'],
       env: {
         jest: true,
       },
