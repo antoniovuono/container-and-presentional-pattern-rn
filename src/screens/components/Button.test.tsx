@@ -1,11 +1,13 @@
 import React from 'react';
-import { render } from '@testing-library/react-native';
+import { render, screen } from '@testing-library/react-native';
 import { Button } from './Button';
 
-test('renders button with correct title', () => {
-  const { getByText } = render(<Button title={'Entrar'} isLoading={false} />);
+describe('Button', () => {
+  it('should be able to render a button if correct title', () => {
+    render(<Button title={'Entrar'} isLoading={false} />);
 
-  const response = getByText('Entrar');
+    const buttonElement = screen.getByText('Entrar');
 
-  console.log(response.props.children);
+    expect(buttonElement).toBeDefined();
+  });
 });
