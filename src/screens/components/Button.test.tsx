@@ -10,4 +10,12 @@ describe('Button', () => {
 
     expect(buttonElement).toBeDefined();
   });
+
+  it('should be able to render a loading indicator if isLoading is true', () => {
+    render(<Button title={'Entrar'} isLoading={true} />);
+
+    const loadingIndicatorElement = screen.getByTestId('loading-indicator');
+
+    expect(loadingIndicatorElement).toBeDefined();
+  });
 });

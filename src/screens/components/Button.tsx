@@ -15,7 +15,11 @@ export function Button({ title, isLoading, ...rest }: ButtonProps) {
   return (
     <TouchableOpacity style={styles.button} {...rest}>
       {isLoading ? (
-        <ActivityIndicator size="small" color="white" />
+        <ActivityIndicator
+          testID="loading-indicator"
+          size="small"
+          color="white"
+        />
       ) : (
         <Text style={styles.buttonText}>{title}</Text>
       )}
