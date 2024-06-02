@@ -3,6 +3,9 @@
 # dependencies
 node_modules/
 
+## coerage
+coverage/
+
 # Expo
 .expo/
 dist/

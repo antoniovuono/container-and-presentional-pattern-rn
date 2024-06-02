@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { useProfile } from './hooks/useProfile';
-import { Button } from '../components/Button';
-import { Input } from '../components/Input';
+import { Button } from '../../components/Button';
+import { Input } from '../../components/Input';
 
 export function Profile() {
   const { user, username, setUsername, loading, fetchUser } = useProfile();
