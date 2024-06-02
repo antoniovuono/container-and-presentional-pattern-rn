@@ -13,5 +13,6 @@ yarn start
 ```
 
 Com o projeto rodando no terminal, aperte as teclas:
-`i:` Para iniciar no IOS.
-`a:` Para iniciar no Android.
+
+- `i:` Para iniciar no IOS.
+- `a:` Para iniciar no Android.
