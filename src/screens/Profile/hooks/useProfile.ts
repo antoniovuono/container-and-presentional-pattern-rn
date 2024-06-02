@@ -23,7 +23,7 @@ export function useProfile() {
       const data = await response.json();
       serUser(data);
     } catch (error) {
-      console.log(error);
+      Alert.alert('Erro ao buscar usuário');
     } finally {
       setLoading(false);
     }
