@@ -16,3 +16,17 @@ Com o projeto rodando no terminal, aperte as teclas:
 
 - `i:` Para iniciar no IOS.
 - `a:` Para iniciar no Android.
+
+### Testes
+
+Para rodar os testes execute
+
+```sh
+yarn test
+```
+
+Para rodar a cobertura.
+
+```sh
+yarn test:coverage
+```
